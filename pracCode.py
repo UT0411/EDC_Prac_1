@@ -35,3 +35,5 @@ pdf = stats.norm.pdf(x, mu, std)
 plt.plot(x, pdf, 'k')
 plt.hist(values, bins=300, density=True, alpha=0.5)
 plt.show() 
+
+print()
