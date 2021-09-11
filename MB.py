@@ -4,20 +4,6 @@ import matplotlib.pyplot as plt
 from scipy import stats
 import numpy as np
 
-random.seed(datetime.now())
-s1 = random.randrange(1, 30000)
-s2 = random.randrange(1, 30000)
-s3 = random.randrange(1, 30000)
-
-def WH_Random():
-    global s1, s2, s3
-    s1 = 171*s1 % 30269
-    s2 = 172*s2 % 30307
-    s3 =170*s3 % 30323
-
-    r = (s1/30269.0 + s2/30307.0 + s3/30323.0) #% 1 #Add this 1 before using
-    return r
-
 def g3(x):
     if(abs(x)< 1):
         return 17.49731196*np.exp(-0.5*x**2) - 4.73570326*(3 - x**2) - 2.15787544*(1.5 - abs(x))
@@ -27,7 +13,6 @@ def g3(x):
         return 17.49731196*np.exp(-0.5*x**2) - 2.36785163*((3 - x)**2)
     else:
         return 0 
-
 
 def MB_Random():
     prob = random.random()
@@ -59,22 +44,3 @@ def MB_Random():
         if(x<3 and y > 3):
             x = y
     return x
-            
-
-values = []
-for x in range(1000000):
-    values.append(MB_Random())
-
-mu, std = stats.norm.fit(values)
-
-print("Mean = " + str(mu))
-print("Standard Deviation = " + str(std))
-print("Variance  = " + str(std**2))
-
-x = np.linspace(min(values), max(values), 1000)
-pdf = stats.norm.pdf(x, mu, std)
-
-
-plt.plot(x, pdf, 'k')
-plt.hist(values, bins=300, density=True, alpha=0.5)
-plt.show() 
