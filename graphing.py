@@ -27,5 +27,10 @@ def graph(func):
     plt.hist(values, bins=300, density=True, alpha=0.5)
     plt.show() 
 
+print("Question 1 - Wichmann-Hill Algorithm")
+print("------------------------------------")
 graph(WH_Random)
+print()
+print("Question 2 - Marsaglia-Bray Algorithm")
+print("-------------------------------------")
 graph(MB_Random)
